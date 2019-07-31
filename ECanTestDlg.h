@@ -27,6 +27,9 @@
 
 */
 
+#include "EcanVci.h"
+
+
 class CECanTestDlg : public CDialog
 {
 // Construction
@@ -36,14 +39,18 @@ public:
 
 	int m_devtype;
 	static UINT ReceiveThread(void *param);
+	static UINT RecvListShowThread(void *param);
 	int m_connect;
+
+	CAN_OBJ m_recvframe[10];
+	unsigned int m_recvHigh;
+	unsigned int m_recvLow;
 
 	void ShowInfo(CString str, int code);
 	int strtodata(unsigned char *str, unsigned char *data,int len,int flag);
 	int chartoint(unsigned char chr, unsigned char *cint);
 
 // Dialog Data
-	//{{AFX_DATA(CECanTestDlg)
 	enum { IDD = IDD_ECANTEST_DIALOG };
 	CComboBox	m_ComboSendFrmFmt;
 	CComboBox	m_ComboSendFrmType;
@@ -52,10 +59,8 @@ public:
 	CComboBox	m_ComboDeviceID;
 	CString	m_EditSendData;
 	CString	m_EditSendFrmID;
-	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CECanTestDlg)
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 	//}}AFX_VIRTUAL
@@ -65,7 +70,6 @@ protected:
 	HICON m_hIcon;
 
 	// Generated message map functions
-	//{{AFX_MSG(CECanTestDlg)
 	virtual BOOL OnInitDialog();
 	afx_msg void OnButtonConnect();
 	afx_msg void OnButtonStartcan();
