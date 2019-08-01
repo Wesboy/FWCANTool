@@ -242,6 +242,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CANFilter.cpp" />
     <ClCompile Include="ECanTest.cpp" />
     <ClCompile Include="ECanTestDlg.cpp" />
     <ClCompile Include="StdAfx.cpp">
@@ -254,15 +255,18 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="Update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ECanTest.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CANFilter.h" />
     <ClInclude Include="ECanTest.h" />
     <ClInclude Include="ECanTestDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="Update.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\ECanTest.ico" />
@@ -276,4 +280,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="ECanTest.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

@@ -4,6 +4,8 @@
 //
 #define IDD_ECANTEST_DIALOG             102
 #define IDR_MAINFRAME                   128
+#define IDD_CANFILTER                   131
+#define IDD_UPDATE                      133
 #define IDC_CANID_TEXT                  1000
 #define IDC_COMBO1                      1001
 #define IDC_COMBO_DEVICE_ID             1001
@@ -12,11 +14,10 @@
 #define IDC_STATIC4                     1005
 #define IDC_STATIC44                    1006
 #define IDC_BUTTON_STARTCAN             1007
-#define IDC_TAB1                        1007
-#define IDC_TAB_FUN                     1007
 #define IDC_BUTTON_RESETCAN             1008
 #define IDC_STATIC565                   1009
 #define IDC_STATIC_DEVICE               1010
+#define IDC_TABFUN                      1012
 #define IDC_EDIT_SENDFRAMEID            1024
 #define IDC_BUTTON_SEND                 1025
 #define IDC_COMBO_SENDFRAMETYPE         1027
@@ -29,9 +30,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        131
+#define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1011
+#define _APS_NEXT_CONTROL_VALUE         1018
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

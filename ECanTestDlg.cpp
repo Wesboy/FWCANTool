@@ -39,10 +39,10 @@ void CECanTestDlg::DoDataExchange(CDataExchange *pDX)
 	DDX_Control(pDX, IDC_COMBO_SENDFRAMETYPE, m_ComboSendFrmType);
 	DDX_Control(pDX, IDC_LIST_INFO, m_ListInfo);
 	DDX_Control(pDX, IDC_COMBO_BAUD, m_ComboBaud);
+	DDX_Control(pDX, IDC_TABFUN, m_TabFunc);
 	DDX_Control(pDX, IDC_COMBO_DEVICE_ID, m_ComboDeviceID);
 	DDX_Text(pDX, IDC_EDIT_SENDDATA, m_EditSendData);
 	DDX_Text(pDX, IDC_EDIT_SENDFRAMEID, m_EditSendFrmID);
-	//}}AFX_DATA_MAP
 }
 
 BEGIN_MESSAGE_MAP(CECanTestDlg, CDialog)
@@ -52,6 +52,7 @@ ON_BN_CLICKED(IDC_BUTTON_STARTCAN, OnButtonStartcan)
 ON_BN_CLICKED(IDC_BUTTON_RESETCAN, OnButtonResetcan)
 ON_BN_CLICKED(IDC_BUTTON_SEND, OnButtonSend)
 ON_WM_CLOSE()
+ON_NOTIFY(TCN_SELCHANGE, IDC_TABFUN, &CECanTestDlg::OnTcnSelchangeTabFun)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -77,10 +78,42 @@ BOOL CECanTestDlg::OnInitDialog()
 	m_EditSendFrmID = "0000008A";
 	m_EditSendData = "01 02 03 04 05 06 07 08 ";
 
+	InitFunctionTab();
 
 	UpdateData(false);
 
 	return TRUE; // return TRUE  unless you set the focus to a control
+}
+
+void CECanTestDlg::InitFunctionTab(void)
+{
+	CRect rect;
+
+	m_TabFunc.InsertItem(0, "Filer");
+	m_TabFunc.InsertItem(1, "Update");
+
+	m_TabFunc.GetClientRect(rect);
+	rect.top += 20;
+	rect.bottom -= 0;
+	rect.left += 0;
+	rect.right -= 0;
+	//创建两个对话框
+	m_FilterPager.Create(IDD_CANFILTER, &m_TabFunc);
+	m_FilterPager.MoveWindow(&rect);
+	m_FilterPager.ShowWindow(true);
+	//调整子对话框在父窗口中的位置，可以改动数值，使子窗体的大小合适；
+
+	m_TabFunc.GetClientRect(rect);
+	rect.top += 20;
+	rect.bottom -= 0;
+	rect.left += 0;
+	rect.right -= 0;
+	//设置子对话框尺寸并移动到指定位置
+	m_UpdatePager.Create(IDD_UPDATE, &m_TabFunc);
+	m_UpdatePager.MoveWindow(&rect);
+	m_UpdatePager.ShowWindow(false);
+//设置默认的选项卡
+	m_TabFunc.SetCurSel(0);
 }
 
 void CECanTestDlg::OnButtonConnect()
@@ -495,4 +528,26 @@ void CECanTestDlg::OnClose()
 	CloseDevice(m_devtype, 0);
 
 	CDialog::OnClose();
+}
+
+
+void CECanTestDlg::OnTcnSelchangeTabFun(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	// TODO: 在此添加控件通知处理程序代码
+	*pResult = 0;
+	int CurSel = m_TabFunc.GetCurSel();
+
+	switch (CurSel)
+	{
+	case 0:
+		m_FilterPager.ShowWindow(true);
+		m_UpdatePager.ShowWindow(false);
+		break;
+	case 1:
+		m_FilterPager.ShowWindow(false);
+		m_UpdatePager.ShowWindow(true);
+		break;
+	default:
+		break;
+	}
 }

@@ -28,6 +28,9 @@
 */
 
 #include "EcanVci.h"
+#include "afxcmn.h"
+#include "Update.h"
+#include "CANFilter.h"
 
 
 class CECanTestDlg : public CDialog
@@ -59,6 +62,10 @@ public:
 	CComboBox	m_ComboDeviceID;
 	CString	m_EditSendData;
 	CString	m_EditSendFrmID;
+	CTabCtrl m_TabFunc;
+
+	CANFilter m_FilterPager;
+	Update m_UpdatePager;
 
 	// ClassWizard generated virtual function overrides
 	protected:
@@ -71,6 +78,7 @@ protected:
 
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
+	afx_msg void InitFunctionTab(void);
 	afx_msg void OnButtonConnect();
 	afx_msg void OnButtonStartcan();
 	afx_msg void OnButtonResetcan();
@@ -78,6 +86,8 @@ protected:
 	afx_msg void OnClose();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnTcnSelchangeTabFun(NMHDR *pNMHDR, LRESULT *pResult);
 };
 
 //{{AFX_INSERT_LOCATION}}
