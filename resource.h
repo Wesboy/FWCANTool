@@ -18,6 +18,9 @@
 #define IDC_STATIC565                   1009
 #define IDC_STATIC_DEVICE               1010
 #define IDC_TABFUN                      1012
+#define IDC_MFCEDITBROWSE1              1018
+#define IDC_EDIT1                       1019
+#define IDC_BUTTON1                     1020
 #define IDC_EDIT_SENDFRAMEID            1024
 #define IDC_BUTTON_SEND                 1025
 #define IDC_COMBO_SENDFRAMETYPE         1027
@@ -30,9 +33,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1018
+#define _APS_NEXT_CONTROL_VALUE         1021
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

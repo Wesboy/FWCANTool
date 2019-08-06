@@ -94,26 +94,26 @@ void CECanTestDlg::InitFunctionTab(void)
 
 	m_TabFunc.GetClientRect(rect);
 	rect.top += 20;
-	rect.bottom -= 0;
-	rect.left += 0;
-	rect.right -= 0;
+	rect.bottom -= 5;
+	rect.left += 2;
+	rect.right -= 2;
 	//创建两个对话框
 	m_FilterPager.Create(IDD_CANFILTER, &m_TabFunc);
 	m_FilterPager.MoveWindow(&rect);
-	m_FilterPager.ShowWindow(true);
+	m_FilterPager.ShowWindow(false);
 	//调整子对话框在父窗口中的位置，可以改动数值，使子窗体的大小合适；
 
 	m_TabFunc.GetClientRect(rect);
 	rect.top += 20;
-	rect.bottom -= 0;
-	rect.left += 0;
-	rect.right -= 0;
+	rect.bottom -= 5;
+	rect.left += 2;
+	rect.right -= 2;
 	//设置子对话框尺寸并移动到指定位置
 	m_UpdatePager.Create(IDD_UPDATE, &m_TabFunc);
 	m_UpdatePager.MoveWindow(&rect);
-	m_UpdatePager.ShowWindow(false);
+	m_UpdatePager.ShowWindow(true);
 //设置默认的选项卡
-	m_TabFunc.SetCurSel(0);
+	m_TabFunc.SetCurSel(1);
 }
 
 void CECanTestDlg::OnButtonConnect()
